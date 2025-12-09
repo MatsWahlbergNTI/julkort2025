@@ -1,1 +1,78 @@
-hello
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Julkort</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+      function draw() {
+        const canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+          const ctx = canvas.getContext("2d");
+
+          ctx.fillStyle = "rgb(200 0 0)";
+          ctx.fillRect(10, 10, 50, 50);
+
+          ctx.fillStyle = "rgb(0 0 200 / 50%)";
+          ctx.fillRect(30, 30, 50, 50);
+          
+          ctx.fillRect(125, 25, 100, 100);
+          ctx.clearRect(145, 45, 60, 60);
+          ctx.strokeRect(150, 50, 50, 50);
+          
+          ctx.fillStyle = "rgb(250 0 0)"
+          ctx.beginPath();
+          ctx.moveTo(275, 50);
+          ctx.lineTo(300, 75);
+          ctx.lineTo(300, 25);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(75, 175, 50, 0, Math.PI * 2, true); // Outer circle
+          ctx.moveTo(110, 175);
+          ctx.arc(75, 175, 35, 0, Math.PI, false); // Mouth (clockwise)
+          ctx.moveTo(65, 165);
+          ctx.arc(60, 165, 5, 0, Math.PI * 2, true); // Left eye
+          ctx.moveTo(95, 165);
+          ctx.arc(90, 165, 5, 0, Math.PI * 2, true); // Right eye
+          ctx.stroke();
+  
+          for (let i = 0; i < 6; i++) {
+            for (let j = 0; j < 6; j++) {
+              ctx.fillStyle = `rgb(${Math.floor(255 - 42.5 * i)} ${Math.floor(
+                255 - 42.5 * j,
+              )} 0)`;
+              ctx.fillRect(j * 25+250, i * 25+250, 25, 25);
+            }
+          }
+         
+          ctx.font = "48px serif";
+          ctx.fillText("God Jul", 10, 400);
+        }
+      }
+      draw();
+    </script>
+    <p>Lektionerna fram till lovet går ut på att göra ett julkort i Canvas. Canvas är ett sätt att rita med vektorgrafik direkt på hemsidor.</p>
+    <p>Utgå från koden i den här html-filen och gör ett eget kort med klassiska julmönster.</p>
+    <ol>
+      <li>Välj vad du vill rita först (förslagsvis ett paket) 
+        <br> 
+        Förslagsvis kan rektanglar användas för att göra paket och trianglar användas för att göra julgranar.
+        <br>
+        För att göra ett paket kan du rita en rektangel för hela paketet och sedan två mindre rektanglar för banden.
+      </li>
+      <li>Kommentera bort rader i skriptet som inte ritar rektanglar (eller trianglar om du gör en julgran) genom att skriva // i början av raden</li>
+      <li>Ändra på koden tills din hemsida ser ut som ett julkort</li>
+    </ol>
+    <p>Hemsidan ska sedan läggas ut på GitHub och vi kollar på julkorten tillsammans den 16 december. 
+      <br>
+      Skriv i uppgiften om du vill att kortet ska visas eller inte.</p>
+  </body>
+</html>
